@@ -7,6 +7,30 @@
     <title>Calculator | The Odin Project</title>
 </head>
 <body>
+    <div class="calculator">
+        <div class="display">
+        </div>
+        <div class="buttons">
+            <button type="button" id="clear-btn">Clear</button>
+            <button type="button" id="delete-btn">Del</button>
+            <button type="button" id="7">7</button>
+            <button type="button" id="8">8</button>
+            <button type="button" id="9">9</button>
+            <button type="button" id="divide-btn">/</button>
+            <button type="button" id="4">4</button>
+            <button type="button" id="5">5</button>
+            <button type="button" id="6">6</button>
+            <button type="button" id="multiply-btn">X</button>
+            <button type="button" id="1">1</button>
+            <button type="button" id="2">2</button>
+            <button type="button" id="3">3</button>
+            <button type="button" id="subtract-btn">-</button>
+            <button type="button" id="decimal-btn">.</button>
+            <button type="button" id="0">0</button>
+            <button type="button" id="equality-btn">=</button>
+            <button type="button" id="addition-btn">+</button>
+        </div>
+    </div>
     <script>
         function addition(x, y){
             result = x + y;
@@ -18,6 +42,10 @@
         }
         function multiply(x, y){
             result = x * y;
+            return result;
+        }
+        function divide(x, y){
+            result = x / y;
             return result;
         }
     </script>
