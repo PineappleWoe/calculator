@@ -97,9 +97,12 @@
                 } else if (action === 'delete') {
                     console.log("Delete Key")
                     let displayText = calculatorDisplay.textContent;
-                    displayText = displayText.slice(0, -1);
-
-                    calculatorDisplay.textContent = displayText;
+                    if (!displayText.length == 1){
+                        displayText = displayText.slice(0, -1);
+                        calculatorDisplay.textContent = displayText;
+                    } else {
+                        calculatorDisplay.textContent = '0';
+                    }
                 } else if (action === 'clear') {
                     console.log("Clear Key")
                     calculatorDisplay.textContent = '0';
