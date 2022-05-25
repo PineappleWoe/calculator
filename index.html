@@ -11,27 +11,46 @@
         <div class="display">
         </div>
         <div class="buttons">
-            <button type="button" id="clear-btn">Clear</button>
-            <button type="button" id="delete-btn">Del</button>
+            <button type="button" id="clear-btn" data-action="clear">Clear</button>
+            <button type="button" id="delete-btn" data-action="delete">Del</button>
             <button type="button" id="7">7</button>
             <button type="button" id="8">8</button>
             <button type="button" id="9">9</button>
-            <button type="button" id="divide-btn">/</button>
+            <button type="button" id="divide-btn" data-action="divide">/</button>
             <button type="button" id="4">4</button>
             <button type="button" id="5">5</button>
             <button type="button" id="6">6</button>
-            <button type="button" id="multiply-btn">X</button>
+            <button type="button" id="multiply-btn" data-action="multiply">X</button>
             <button type="button" id="1">1</button>
             <button type="button" id="2">2</button>
             <button type="button" id="3">3</button>
-            <button type="button" id="subtract-btn">-</button>
-            <button type="button" id="decimal-btn">.</button>
+            <button type="button" id="subtract-btn" data-action="subtract">-</button>
+            <button type="button" id="decimal-btn" data-action="decimal">.</button>
             <button type="button" id="0">0</button>
-            <button type="button" id="equality-btn">=</button>
-            <button type="button" id="addition-btn">+</button>
+            <button type="button" id="equality-btn" data-action="calculate">=</button>
+            <button type="button" id="addition-btn" data-action="addition">+</button>
         </div>
     </div>
     <script>
+        const calculator = document.querySelector('.calculator');
+        const calculatorButtons = document.querySelector('.buttons');
+
+        calculatorButtons.addEventListener('click', e => {
+            if (e.target.matches('button')){
+                let button = e.target;
+                let action = button.dataset.action;
+
+                if (!action) {
+                    console.log(`Number Key: ${button.textContent}`);
+                } else if (action === 'addition' ||
+                           action === 'subtract' ||
+                           action === 'multiply' ||
+                           action === 'divide') {
+                               console.log(`Operator Key: ${button.textContent}`);
+                           }
+            }
+        });
+
         function addition(x, y){
             result = x + y;
             return result;
@@ -47,6 +66,10 @@
         function divide(x, y){
             result = x / y;
             return result;
+        }
+
+        function updateDisplay(){
+
         }
     </script>
 </body>
