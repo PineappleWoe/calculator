@@ -55,6 +55,9 @@
         const calculatorDisplay = document.querySelector('.display');
         const calculatorButtons = document.querySelector('.buttons');
 
+        let firstValue;
+        let secondValue;
+
         // Check which Button was Pressed
         calculatorButtons.addEventListener('click', e => {
             if (e.target.matches('button')){
@@ -76,6 +79,14 @@
                     action === 'divide'
                 ) {
                     console.log(`Operator Key: ${button.textContent}`);
+                    if (!firstValue) {
+                        firstValue = parseFloat(calculatorDisplay.textContent);
+                        console.log(firstValue);
+                        calculatorDisplay.textContent = '0';
+                    } else {
+                        secondValue = parseFloat(calculatorDisplay.textContent);
+                        console.log(secondValue);
+                    }
                 } else if (action === 'decimal') {
                     console.log("Decimal Key")
                     if (!calculatorDisplay.textContent.includes('.')){
