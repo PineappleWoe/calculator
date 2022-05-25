@@ -8,8 +8,7 @@
 </head>
 <body>
     <div class="calculator">
-        <div class="display">
-        </div>
+        <div class="display">0</div>
         <div class="buttons">
             <button type="button" id="clear-btn" data-action="clear">Clear</button>
             <button type="button" id="delete-btn" data-action="delete">Del</button>
@@ -32,25 +31,6 @@
         </div>
     </div>
     <script>
-        const calculator = document.querySelector('.calculator');
-        const calculatorButtons = document.querySelector('.buttons');
-
-        calculatorButtons.addEventListener('click', e => {
-            if (e.target.matches('button')){
-                let button = e.target;
-                let action = button.dataset.action;
-
-                if (!action) {
-                    console.log(`Number Key: ${button.textContent}`);
-                } else if (action === 'addition' ||
-                           action === 'subtract' ||
-                           action === 'multiply' ||
-                           action === 'divide') {
-                               console.log(`Operator Key: ${button.textContent}`);
-                           }
-            }
-        });
-
         function addition(x, y){
             result = x + y;
             return result;
@@ -68,9 +48,56 @@
             return result;
         }
 
-        function updateDisplay(){
-
+        function updateDisplay(number){
         }
+
+        const calculator = document.querySelector('.calculator');
+        const calculatorDisplay = document.querySelector('.display');
+        const calculatorButtons = document.querySelector('.buttons');
+
+        // Check which Button was Pressed
+        calculatorButtons.addEventListener('click', e => {
+            if (e.target.matches('button')){
+                let button = e.target;
+                let action = button.dataset.action;
+
+                if (!action) {
+                    console.log(`Number Key: ${button.textContent}`);
+                    if (calculatorDisplay.textContent === '0'){
+                        calculatorDisplay.textContent = button.textContent;
+                    } else {
+                        calculatorDisplay.textContent += button.textContent;
+                    }
+
+                } else if (
+                    action === 'addition' ||
+                    action === 'subtract' ||
+                    action === 'multiply' ||
+                    action === 'divide'
+                ) {
+                    console.log(`Operator Key: ${button.textContent}`);
+                } else if (action === 'decimal') {
+                    console.log("Decimal Key")
+                    if (!calculatorDisplay.textContent.includes('.')){
+                        calculatorDisplay.textContent += '.';
+                    } else {
+                        // Do nothing
+                    }
+                } else if (action === 'delete') {
+                    console.log("Delete Key")
+                    let displayText = calculatorDisplay.textContent;
+                    displayText = displayText.slice(0, -1);
+
+                    calculatorDisplay.textContent = displayText;
+                } else if (action === 'clear') {
+                    console.log("Clear Key")
+                    calculatorDisplay.textContent = '0';
+                } else if (action === 'calculate') {
+                    console.log("Equals Key")
+                }
+            }
+        });
+
     </script>
 </body>
 </html>
