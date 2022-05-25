@@ -1,1 +1,2 @@
-# calculator
+# The Odin Project - Calculator
+Calculator application, designed using HTML, CSS and Javascript to demonstrate skills learned during The Odin Project's Foundation Path as well as achieve its completion.
